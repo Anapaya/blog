@@ -1,0 +1,26 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "native",
+    srcs = [
+        "empty.go",
+        "polar.h",
+    ],
+    importpath = "github.com/osohq/go-oso/internal/ffi/native",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/ffi/native/linux",
+        "//internal/ffi/native/macos",
+        "//internal/ffi/native/windows",
+    ],
+)
+
+alias(
+    name = "go_default_library",
+    actual = ":native",
+    visibility = ["//:__subpackages__"],
+)
+
+exports_files([
+    "polar.h",
+])

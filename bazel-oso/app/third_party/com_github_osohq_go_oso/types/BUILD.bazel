@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "types",
+    srcs = [
+        "adapter.go",
+        "partial.go",
+        "polar_types.go",
+        "relation.go",
+    ],
+    importpath = "github.com/osohq/go-oso/types",
+    visibility = ["//visibility:public"],
+)
+
+alias(
+    name = "go_default_library",
+    actual = ":types",
+    visibility = ["//visibility:public"],
+)

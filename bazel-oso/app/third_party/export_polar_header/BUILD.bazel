@@ -1,0 +1,30 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@bazel_gazelle//:def.bzl", "gazelle")
+
+# gazelle:prefix github.com/osohq/go-oso
+gazelle(name = "gazelle")
+
+go_library(
+    name = "go-oso",
+    srcs = [
+        "oso.go",
+        "polar.go",
+        "query.go",
+    ],
+    importpath = "github.com/osohq/go-oso",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//errors",
+        "//interfaces",
+        "//internal/ffi",
+        "//internal/host",
+        "//internal/util",
+        "//types",
+    ],
+)
+
+alias(
+    name = "go_default_library",
+    actual = ":go-oso",
+    visibility = ["//visibility:public"],
+)

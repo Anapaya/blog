@@ -1,0 +1,3 @@
+exports_files([
+    "com_github_osohq_go_oso.patch",
+])

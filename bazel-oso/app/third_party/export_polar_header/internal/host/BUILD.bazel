@@ -1,0 +1,28 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "host",
+    srcs = [
+        "host.go",
+        "reflect.go",
+    ],
+    importpath = "github.com/osohq/go-oso/internal/host",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//errors",
+        "//internal/ffi",
+        "//types",
+    ],
+)
+
+go_test(
+    name = "host_test",
+    srcs = ["reflect_test.go"],
+    embed = [":host"],
+)
+
+alias(
+    name = "go_default_library",
+    actual = ":host",
+    visibility = ["//:__subpackages__"],
+)

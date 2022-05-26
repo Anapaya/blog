@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_test")
+load("@bazel_gazelle//:def.bzl", "gazelle")
+
+# gazelle:prefix github.com/Anapaya/blog/bazel-oso/app
+gazelle(name = "gazelle")
+
+go_test(
+    name = "go_default_test",
+    srcs = ["app_test.go"],
+    data = glob(["testdata/**"]),
+    deps = ["@com_github_osohq_go_oso//:go_default_library"],
+)
