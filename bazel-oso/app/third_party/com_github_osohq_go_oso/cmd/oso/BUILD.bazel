@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "oso_lib",
+    srcs = ["oso.go"],
+    importpath = "github.com/osohq/go-oso/cmd/oso",
+    visibility = ["//visibility:private"],
+    deps = ["//:go-oso"],
+)
+
+go_binary(
+    name = "oso",
+    embed = [":oso_lib"],
+    visibility = ["//visibility:public"],
+)

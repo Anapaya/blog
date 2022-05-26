@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "interfaces",
+    srcs = ["interfaces.go"],
+    importpath = "github.com/osohq/go-oso/interfaces",
+    visibility = ["//visibility:public"],
+)
+
+alias(
+    name = "go_default_library",
+    actual = ":interfaces",
+    visibility = ["//visibility:public"],
+)

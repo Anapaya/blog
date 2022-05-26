@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "util",
+    srcs = ["util.go"],
+    importpath = "github.com/osohq/go-oso/internal/util",
+    visibility = ["//:__subpackages__"],
+)
+
+alias(
+    name = "go_default_library",
+    actual = ":util",
+    visibility = ["//:__subpackages__"],
+)

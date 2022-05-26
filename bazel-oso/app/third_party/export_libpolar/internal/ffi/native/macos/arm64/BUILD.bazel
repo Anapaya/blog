@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "arm64",
+    srcs = ["empty.go"],
+    importpath = "github.com/osohq/go-oso/internal/ffi/native/macos/arm64",
+    visibility = ["//:__subpackages__"],
+)
+
+alias(
+    name = "go_default_library",
+    actual = ":arm64",
+    visibility = ["//:__subpackages__"],
+)
